@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {getPhotos} from '../api/photosApi';
+import { getPhotosThunk, getPhotosSaga } from '../redux/actions/photosActions';
 import Photo from './Photo';
 import NoData from './NoData';
 import Loader from './Loader';
@@ -33,7 +33,19 @@ class PhotosList extends Component {
     }
 
     loadPhotos() {
-        getPhotos(this.state.page, this.state.date);
+        //залишити щось одне
+
+        //thunk
+        this.props.dispatch(getPhotosThunk({
+            page: this.state.page,
+            date: this.state.date
+        }));
+
+        //saga
+        /*this.props.dispatch(getPhotosSaga({
+            page: this.state.page,
+            date: this.state.date
+        }));*/
     }
 
     loadInitialPage() {
@@ -77,7 +89,6 @@ class PhotosList extends Component {
     }
 
     render() {
-        console.log(this.props);
         return (
             <>
                 <div className="row">
