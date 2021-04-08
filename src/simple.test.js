@@ -10,7 +10,7 @@ describe('simple test', () => {
         // дія
         const result = sum(1, 1);
         // ствердження
-        expect(result).toBe(2);
+        expect(result).toBe(22);
     });
 
     it('test if 2*2 + 8 = 12', () => {
